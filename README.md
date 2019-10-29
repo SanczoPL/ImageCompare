@@ -1,1 +1,3 @@
-ImageCompare
+ImageCompare blocks:
+
+  * codestats 2014
