@@ -1,5 +1,5 @@
 #include "../include/imagecompare.h"
-#include <QJsonObject>
+
 #include "compare.h"
 
 constexpr auto FILTER_NAME{ "Name" };
