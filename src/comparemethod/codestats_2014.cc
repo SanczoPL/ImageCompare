@@ -4,32 +4,30 @@
 constexpr auto ROI{ "Roi" };
 
 Compare::CodeStats2014::CodeStats2014(QJsonObject const &a_config)
-  : m_ROI(cv::imread({ a_config[ROI].toString().toStdString() }, 0))
 {
+  m_ROI = cv::imread({ a_config[ROI].toString().toStdString() }, 0);
 }
+
 
 struct imageErrors Compare::CodeStats2014::process(const cv::Mat_<uchar> &binary, const cv::Mat_<uchar> &gt)
 {
-  if (binary.empty())
+  H_Logger->trace("imageErrors Compare::CodeStats2014::process()");
+  if (m_ROI.empty())
   {
-    H_Logger->error("Binary frame is null. Probably a bad path or incomplete folder.\n");
-  }
-
-  if (gt.empty())
-  {
-    H_Logger->error("gt frame is null. Probably a bad path or incomplete folder.\n");
+    H_Logger->error("m_ROI frame is null. Probably a bad path or incomplete folder.\n");
   }
 
   cv::MatConstIterator_<uchar> itBinary = binary.begin();
   cv::MatConstIterator_<uchar> itGT = gt.begin();
   cv::MatConstIterator_<uchar> itROI = m_ROI.begin();
+  H_Logger->trace("imageErrors Compare::CodeStats2014::process() imageErrors");
   struct imageErrors m_errors2;
   m_errors2.fnError = 0;
   m_errors2.fpError = 0;
   m_errors2.tnError = 0;
   m_errors2.tpError = 0;
   m_errors2.nbShadowError = 0;
-
+  H_Logger->trace("imageErrors Compare::CodeStats2014 Main loop:");
   cv::MatConstIterator_<uchar> itEnd = binary.end();
   for (; itBinary != itEnd; ++itBinary, ++itGT, ++itROI)
   {
@@ -68,5 +66,6 @@ struct imageErrors Compare::CodeStats2014::process(const cv::Mat_<uchar> &binary
       }
     }
   }
+  H_Logger->trace("imageErrors Compare::CodeStats2014 done");
   return m_errors2;
 }
