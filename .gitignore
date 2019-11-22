@@ -84,3 +84,9 @@ build/example/CMakeFiles/ImageCompareExample_autogen.dir/ParseCache.txt
 build/example/CMakeFiles/ImageCompareExample_autogen.dir/progress.make
 build/example/ImageCompareExample_autogen/moc_predefs.h
 build/example/ImageCompareExample_autogen/mocs_compilation.cpp
+build/CMakeFiles/ImageCompare.dir/src/comparemethod/none.cc.o
+build/CMakeFiles/ImageCompare.dir/home/gmatczak/Dropbox/Programowanie/C++/QT/IncludeSpdlog/spdlog.cc.o
+build/CMakeFiles/ImageCompare.dir/src/main.cc.o
+build/CMakeFiles/CMakeError.log
+.vscode/settings.json
+build/ImageCompare
