@@ -1,5 +1,4 @@
 #include "../include/imagecompare.h"
-#include "../../block/src/block.h"
 #include <QDebug>
 #include <QJsonArray>
 #include <QJsonObject>

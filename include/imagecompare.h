@@ -2,6 +2,7 @@
 #define IMAGE_COMPARE_H
 
 #include <opencv2/imgproc.hpp>
+#include "../../../IncludeSpdlog/spdlog.h"
 
 class BaseCompare;
 class QJsonArray;

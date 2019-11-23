@@ -15,7 +15,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${FLAGS_COMMON}")
 set(CMAKE_AUTOMOC ON)
 find_package(Qt5Core REQUIRED)
 find_package(OpenCV REQUIRED)
-find_package(Tools REQUIRED)
 #include fix for OpenCV
 include_directories(
     ${OpenCV_INCLUDE_DIRS}
@@ -58,7 +57,6 @@ target_link_libraries(${PROJECT_NAME}
     opencv_core
     opencv_imgcodecs
     opencv_bgsegm
-    Tools
 )
 
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
