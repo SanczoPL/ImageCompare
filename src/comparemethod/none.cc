@@ -1,6 +1,6 @@
 #include "none.h"
 
-Compare::None::None(QJsonObject const &a_config)
+Compare::None::None()
 {
     H_Logger->trace("imageErrors Compare::None()");
 } 

@@ -27,8 +27,8 @@ void ImageCompare::configure(QJsonObject const &a_config)
   switch (NAME_SID)
   {
     case SID("CodeStats2014"): m_subtractor = { new Compare::CodeStats2014{a_config} }; break;
-    case SID("None"): m_subtractor = { new Compare::None{a_config} }; break;
-    default: H_Logger->error("Unsupported filter type: {}", NAME_STRING); break;
+    case SID("None"): m_subtractor = { new Compare::None() }; break;
+    default: H_Logger->error("Unsupported compare type: {}", NAME_STRING); break;
   }
 
 }

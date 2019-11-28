@@ -10,9 +10,8 @@ class QJsonObject;
 namespace Compare {
 class None : public BaseCompare {
  public:
-	None(QJsonObject const &a_config);
-	struct imageErrors process(const cv::Mat_<uchar> &binary,
-														 const cv::Mat_<uchar> &gt);
+	None();
+	struct imageErrors process(const cv::Mat_<uchar> &binary, const cv::Mat_<uchar> &gt);
 
 
  private:
