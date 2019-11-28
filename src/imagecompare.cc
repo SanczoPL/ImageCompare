@@ -8,7 +8,7 @@ constexpr auto ROI{ "Roi" };
 ImageCompare::ImageCompare(QJsonObject const &a_config)
 {
   m_subtractor = new Compare::None();
-  configure(a_config);
+  //configure(a_config);
 }
 
 ImageCompare::~ImageCompare()
