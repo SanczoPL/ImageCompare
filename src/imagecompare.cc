@@ -8,7 +8,6 @@ constexpr auto ROI{ "Roi" };
 ImageCompare::ImageCompare(QJsonObject const &a_config)
 {
   m_subtractor = new Compare::None();
-  //configure(a_config);
 }
 
 ImageCompare::~ImageCompare()
@@ -22,7 +21,7 @@ void ImageCompare::configure(QJsonObject const &a_config)
   auto const ROI_STRING{ a_config[ROI].toString().toStdString() };
   auto const NAME_SID{ SID(NAME_STRING.c_str()) };
   H_Logger->trace("ImageCompare type: {} roi:{}", NAME_STRING,ROI_STRING);
-  //delete m_subtractor;
+  delete m_subtractor;
   H_Logger->trace("ImageCompare type: {} roi:{}", NAME_STRING,ROI_STRING);
   switch (NAME_SID)
   {
