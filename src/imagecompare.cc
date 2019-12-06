@@ -1,4 +1,4 @@
-#include "../src/imagecompare.h"
+#include "imagecompare.h"
 
 #include "compare.h"
 
