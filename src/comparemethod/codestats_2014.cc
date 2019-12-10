@@ -2,10 +2,18 @@
 #include <QJsonObject>
 
 constexpr auto ROI{ "Roi" };
+constexpr auto HEIGHT{ "Height" };
+constexpr auto DRONSIZE{ "DronSize" };
+constexpr auto WIDTH{ "Width" };
+
 
 Compare::CodeStats2014::CodeStats2014(QJsonObject const &a_config)
 {
   m_ROI = cv::imread({ a_config[ROI].toString().toStdString() }, 0);
+  qint32 m_width = a_config[WIDTH].toString();
+  qint32 m_height = a_config[HEIGHT].toString();
+  qint32 m_dronSize = a_config[DRONSIZE].toString();
+  m_res = ( m_width * m_height ) / m_dronSize;                         
 }
 
 
@@ -38,11 +46,13 @@ struct imageErrors Compare::CodeStats2014::process(const cv::Mat_<uchar> &binary
       { // Model thinks pixel is foreground
         if (*itGT == WHITE)
         {
-          ++m_errors2.tpError; // and it is
+          //++m_errors2.tpError; // and it is
+          m_errors2.tpError+=m_res;
         }
         else
         {
-          ++m_errors2.fpError; // but it's not
+          //++m_errors2.fpError; // but it's not
+          m_errors2.fpError+=m_res;
         }
       }
       else
