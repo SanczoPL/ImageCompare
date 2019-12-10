@@ -10,9 +10,9 @@ constexpr auto WIDTH{ "Width" };
 Compare::CodeStats2014::CodeStats2014(QJsonObject const &a_config)
 {
   m_ROI = cv::imread({ a_config[ROI].toString().toStdString() }, 0);
-  qint32 m_width = a_config[WIDTH].toString();
-  qint32 m_height = a_config[HEIGHT].toString();
-  qint32 m_dronSize = a_config[DRONSIZE].toString();
+  quint32 m_width = a_config[WIDTH].toInt();
+  quint32 m_height = a_config[HEIGHT].toInt();
+  quint32 m_dronSize = a_config[DRONSIZE].toInt();
   m_res = ( m_width * m_height ) / m_dronSize;                         
 }
 

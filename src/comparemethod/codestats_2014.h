@@ -23,7 +23,7 @@ class CodeStats2014 : public BaseCompare {
  private:
 	struct imageErrors m_errors {};
 	cv::Mat_<uchar> m_ROI;
-	qint32 m_res;
+	quint32 m_res;
 };
 }  // namespace Compare
 
