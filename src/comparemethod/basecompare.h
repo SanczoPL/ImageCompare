@@ -7,11 +7,11 @@
 
 struct imageErrors
 {
-  quint32 tpError;
-  quint32 fpError;
-  quint32 fnError;
-  quint32 tnError;
-  quint32 nbShadowError;
+  quint64 tpError;
+  quint64 fpError;
+  quint64 fnError;
+  quint64 tnError;
+  quint64 nbShadowError;
 };
 
 class BaseCompare
