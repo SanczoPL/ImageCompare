@@ -35,7 +35,7 @@ struct imageErrors Compare::CodeStats2014::process(const cv::Mat_<uchar> &binary
   m_errors2.tnError = 0;
   m_errors2.tpError = 0;
   m_errors2.nbShadowError = 0;
-  H_Logger->trace("imageErrors Compare::CodeStats2014 Main loop:");
+  H_Logger->trace("imageErrors Compare::CodeStats2014 Main loop: m_res:{}",m_res);
   cv::MatConstIterator_<uchar> itEnd = binary.end();
   for (; itBinary != itEnd; ++itBinary, ++itGT, ++itROI)
   {
@@ -43,27 +43,27 @@ struct imageErrors Compare::CodeStats2014::process(const cv::Mat_<uchar> &binary
     if (*itROI != BLACK && *itGT != UNKNOWN)
     {
       if (*itBinary == WHITE)
-      { // Model thinks pixel is foreground
+      { // Model thinks pixel is background 
         if (*itGT == WHITE)
         {
           //++m_errors2.tpError; // and it is
-          m_errors2.tpError+=m_res;
+          ++m_errors2.tpError;
         }
         else
         {
           //++m_errors2.fpError; // but it's not
-          m_errors2.fpError+=m_res;
+          ++m_errors2.fpError;
         }
       }
       else
-      { // Model thinks pixel is background
+      { // Model thinks pixel is foreground
         if (*itGT == WHITE)
         {
-          ++m_errors2.fnError; // but it's not
+          m_errors2.fnError+=m_res; // but it's not
         }
         else
         {
-          ++m_errors2.tnError; // and it is
+          m_errors2.tnError+=m_res; // and it is
         }
       }
 
