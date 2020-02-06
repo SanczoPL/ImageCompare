@@ -20,13 +20,15 @@ Compare::CodeStats2014::CodeStats2014(QJsonObject const &a_config)
 struct imageErrors Compare::CodeStats2014::process(const cv::Mat_<uchar> &binary, const cv::Mat_<uchar> &gt)
 {
   H_Logger->trace("imageErrors Compare::CodeStats2014::process()");
-  if (m_ROI.empty())
+  if (m_ROI.empty() ||  m_ROI.cols == 0 || m_ROI.rows==0)
   {
     H_Logger->error("m_ROI frame is null. Probably a bad path or incomplete folder.\n");
   }
-
+  H_Logger->trace("imageErrors Compare::CodeStats2014::process() binary.begin()");
   cv::MatConstIterator_<uchar> itBinary = binary.begin();
+  H_Logger->trace("imageErrors Compare::CodeStats2014::process() gt.begin()");
   cv::MatConstIterator_<uchar> itGT = gt.begin();
+  H_Logger->trace("imageErrors Compare::CodeStats2014::process() roi.begin()");
   cv::MatConstIterator_<uchar> itROI = m_ROI.begin();
   H_Logger->trace("imageErrors Compare::CodeStats2014::process() imageErrors");
   struct imageErrors m_errors2;
