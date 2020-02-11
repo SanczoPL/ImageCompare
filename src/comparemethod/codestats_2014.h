@@ -19,6 +19,7 @@ class CodeStats2014 : public BaseCompare {
 	CodeStats2014(QJsonObject const &a_config);
 	struct imageErrors process(const cv::Mat_<uchar> &binary,
 														 const cv::Mat_<uchar> &gt);
+	void alertBadImage(const cv::Mat_<uchar> &image, QString name);
 
  private:
 	struct imageErrors m_errors {};

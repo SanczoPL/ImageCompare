@@ -16,21 +16,25 @@ Compare::CodeStats2014::CodeStats2014(QJsonObject const &a_config)
   m_res = ( m_width * m_height  - m_dronSize) / m_dronSize;                         
 }
 
+void Compare::CodeStats2014::alertBadImage(const cv::Mat_<uchar> &image, QString name)
+{
+  H_Logger->trace("imageErrors Compare::CodeStats2014::process()");
+  if (image.empty() ||  image.cols == 0 || image.rows==0)
+  {
+    H_Logger->error("image frame is null. Name:{}\n",name.toStdString());
+  }
+}
 
 struct imageErrors Compare::CodeStats2014::process(const cv::Mat_<uchar> &binary, const cv::Mat_<uchar> &gt)
 {
   H_Logger->trace("imageErrors Compare::CodeStats2014::process()");
-  if (m_ROI.empty() ||  m_ROI.cols == 0 || m_ROI.rows==0)
-  {
-    H_Logger->error("m_ROI frame is null. Probably a bad path or incomplete folder.\n");
-  }
-  H_Logger->trace("imageErrors Compare::CodeStats2014::process() binary.begin()");
+  alertBadImage(binary,"binary");
+  alertBadImage(gt,"gt");
+  alertBadImage(m_ROI,"m_ROI");
+
   cv::MatConstIterator_<uchar> itBinary = binary.begin();
-  H_Logger->trace("imageErrors Compare::CodeStats2014::process() gt.begin()");
   cv::MatConstIterator_<uchar> itGT = gt.begin();
-  H_Logger->trace("imageErrors Compare::CodeStats2014::process() roi.begin()");
   cv::MatConstIterator_<uchar> itROI = m_ROI.begin();
-  H_Logger->trace("imageErrors Compare::CodeStats2014::process() imageErrors");
   struct imageErrors m_errors2;
   m_errors2.fnError = 0;
   m_errors2.fpError = 0;
