@@ -9,11 +9,6 @@ constexpr auto WIDTH{ "Width" };
 
 Compare::CodeStats2014::CodeStats2014(QJsonObject const &a_config)
 {
-  //m_ROI = cv::imread({ a_config[ROI].toString().toStdString() }, 0);
-  //m_ROI = cv::Mat::zeros(height, width, CV_32F);
-  
-  //cv::Mat img(m_height, m_width, CV_8UC1, cv::Scalar(255));
-
   quint32 m_width = a_config[WIDTH].toInt();
   quint32 m_height = a_config[HEIGHT].toInt();
   m_ROI = cv::Mat(m_height, m_width, CV_8UC1, cv::Scalar(255));
