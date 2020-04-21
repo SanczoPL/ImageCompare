@@ -3,6 +3,7 @@
 
 #include <opencv2/highgui.hpp>
 #include <opencv2/video.hpp>
+
 #include "basecompare.h"
 
 const uchar BLACK = 0;
@@ -13,19 +14,22 @@ const uchar WHITE = 255;
 
 class QJsonObject;
 
-namespace Compare {
-class CodeStats2014 : public BaseCompare {
+namespace Compare
+{
+class CodeStats2014 : public BaseCompare
+{
  public:
-	CodeStats2014(QJsonObject const &a_config);
-	struct imageErrors process(const cv::Mat_<uchar> &binary,
-														 const cv::Mat_<uchar> &gt);
-	void alertBadImage(const cv::Mat_<uchar> &image, QString name);
+  CodeStats2014(QJsonObject const &a_config);
+  struct imageErrors process(const cv::Mat_<uchar> &binary, const cv::Mat_<uchar> &gt);
+  void alertBadImage(const cv::Mat_<uchar> &image, QString name);
 
  private:
-	struct imageErrors m_errors {};
-	cv::Mat_<uchar> m_ROI;
-	quint32 m_res;
+  struct imageErrors m_errors
+  {
+  };
+  cv::Mat_<uchar> m_ROI;
+  quint32 m_res;
 };
-}  // namespace Compare
+} // namespace Compare
 
-#endif  // CODE_STATS_2014_H
+#endif // CODE_STATS_2014_H

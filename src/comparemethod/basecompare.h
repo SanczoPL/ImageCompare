@@ -1,9 +1,11 @@
 #ifndef BASE_COMPARE_H
 #define BASE_COMPARE_H
 
-#include "../../../../IncludeSpdlog/spdlog.h"
 #include <QtCore>
+
 #include <opencv2/imgproc.hpp>
+
+#include "../../../../IncludeSpdlog/spdlog.h"
 
 struct imageErrors
 {
