@@ -13,13 +13,15 @@ Compare::CodeStats2014::CodeStats2014(QJsonObject const &a_config)
   m_ROI = cv::Mat(m_height, m_width, CV_8UC1, cv::Scalar(255));
   quint32 m_dronSize = a_config[DRONSIZE].toInt();
   m_res = (m_width * m_height - m_dronSize) / m_dronSize;
+  H_Logger->trace("Compare::CodeStats2014::CodeStats2014 m_dronSize:{}",m_dronSize);
 }
 
 void Compare::CodeStats2014::alertBadImage(const cv::Mat_<uchar> &image, QString name)
 {
-  H_Logger->trace("imageErrors Compare::CodeStats2014::process()");
+  //H_Logger->trace("imageErrors Compare::CodeStats2014::process()");
   if (image.empty() || image.cols == 0 || image.rows == 0)
   {
+
     H_Logger->error("image frame is null. Name:{}\n", name.toStdString());
   }
 }
